@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai"); // Gemini API
-import 'dotenv/config'
+require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
