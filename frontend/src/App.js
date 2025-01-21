@@ -11,14 +11,14 @@ const App = () => {
   }, []);
 
   const fetchMessages = async () => {
-    const response = await axios.get("http://localhost:5000/api/messages");
+    const response = await axios.get("https://chatapp-backend-tbkd.onrender.com/api/messages");
     setMessages(response.data);
   };
 
   const sendMessage = async () => {
     if (input.trim()) {
       setIsLoading(true); // Show loader
-      await axios.post("http://localhost:5000/api/messages", {
+      await axios.post("https://chatapp-backend-tbkd.onrender.com/api/messages", {
         sender: "User",
         message: input,
       });
@@ -28,21 +28,7 @@ const App = () => {
     }
   };
 
-  const handleQuery = async () => {
-    if (input.trim()) {
-      setIsLoading(true); // Show loader
-      const response = await axios.post("http://localhost:5000/api/query", {
-        query: input,
-      });
-      await axios.post("http://localhost:5000/api/messages", {
-        sender: "Bot",
-        message: response.data.response,
-      });
-      setInput("");
-      fetchMessages();
-      setIsLoading(false); // Hide loader
-    }
-  };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-50 flex flex-col items-center justify-center p-4">
